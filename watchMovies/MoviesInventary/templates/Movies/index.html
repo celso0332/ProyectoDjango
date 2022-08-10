@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Lista de Libros {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+    <a name="" id="" class="btn btn-dark my-sm-0" href="{% url 'crear' %}" role="button">Agregar</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Movies</h4>
+        <form class="form-inline my-2 my-lg-0" method="GET">
+            <input class="form-control mr-sm-2" type="search" name="buscar" style="width:500px; float:right" placeholder="Search" >
+            
+            <button class="btn btn-outline-primary my-2 my-sm-0" style="float:right" type="submit">Search</button>
+          </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Imagen</th>
+                    <th>Descripcion</th>
+                    
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for movie in movies %}
+                <tr>
+                    <td scope="row">{{ movie.id }}</td>
+                    <td>{{movie.titulo}}</td>
+                    <td> <img src={{ movie.portada.url }} height="50"/></td>
+                    <td>{{movie.sinopsis}}</td>
+                    <td><a name="" id="" class="btn btn-dark" href="{% url 'editar' movie.id%}" role="button">Editar</a>
+                        <a name="" id="" class="btn" style="background:grey" href="{% url 'eliminarMovie' movie.id %}" role="button">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form class="form-inline my-2 my-lg-0" method="GET">
+            <input class="btn btn-primary" type=number name="primeros" value=1 style="display:none">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Más</button>
+          </form>
+          <form class="form-inline my-2 my-lg-0" method="GET">
+            <input class="btn btn-primary" type=number name="todos" value=0 style="display:none">
+            <button class="btn btn-outline-success my-2 my-sm-0" style="float:right" type="submit">Menos</button>
+          </form>
+
+    </div>
+   
+</div>
+
+{% endblock contenido %}

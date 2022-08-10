@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Lista de artistas {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+    <a name="" id="" class="btn btn-success" href="{% url 'crearArtista' %}" role="button">Add</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Artistas</h4>
+       
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Recorrido</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+               {% for artista in artistas %}
+                <tr>
+                    <td scope="row">{{ artista.id }}</td>
+                    <td>{{ artista.nombre }}</td>
+                    <td>{{ artista.edad }}</td>
+                    <td>{{ artista.recorrido }}</td>
+                    <td><a name="" id="" class="btn btn-info" href="{% url 'editarArtista' artista.id%}" role="button">Editar</a>
+                        
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminarArtista' artista.id %}" role="button">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+    </div>
+   
+</div>
+
+{% endblock contenido %}

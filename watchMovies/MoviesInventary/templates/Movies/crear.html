@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %} New Movie {% endblock %}
+
+{% block contenido %}
+<div class="card">
+    <div class="card-header">
+        Crear
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la pelicula</h4>
+        {% include 'Movies/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock contenido %}
